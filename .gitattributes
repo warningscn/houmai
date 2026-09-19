@@ -1,0 +1,17 @@
+# 行尾策略（2026-09-19 定）
+#
+# 起因：本机 core.autocrlf=true 会在入库时把 CRLF 转成 LF，后果是 .cmd/.vbs 的
+# CRLF 只存在于工作区、进不了版本库 —— 换台机器或换个 git 设置检出就会拿到
+# LF 的 .cmd，而本项目硬规矩要求 Windows 脚本必须 CRLF（脚本宿主按 ANSI 解析）。
+# 反过来，autocrlf 在检出时又会把 .md/.py 翻成 CRLF，与它们当前的 LF 约定不符。
+#
+# 这里按文件类型钉死，从此与平台、与 core.autocrlf 无关。
+# 注意顺序：gitattributes 后者覆盖前者，所以通用规则在前、具体规则在后。
+
+*       text=auto eol=lf
+
+# Windows 脚本宿主会执行的东西：必须 CRLF 检出。
+*.cmd   text eol=crlf
+*.bat   text eol=crlf
+*.vbs   text eol=crlf
+*.ps1   text eol=crlf

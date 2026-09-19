@@ -1,0 +1,37 @@
+{
+  "codex": {
+    "command": null,
+    "node": null,
+    "avoid_paths": [],
+    "env": {},
+    "codex_home": null,
+    "min_version": "0.150.0"
+  },
+  "watch": {
+    "ignore_threads": [],
+    "lookback_days": 3,
+    "silence_minutes": 5,
+    "initial_lookback_hours": 12
+  },
+  "retry": {
+    "prompt": "continue",
+    "buffer_seconds": 120,
+    "max_attempts": 3,
+    "backoff_seconds": [0, 600, 1800],
+    "coalesce_minutes": 10,
+    "confirm_deadline_minutes": 30,
+    "resume_long_cycle": true,
+    "max_wait_days": 8,
+    "resolved_retention_days": 7
+  },
+  "notify": {
+    "provider": "none",
+    "serverchan_key": "",
+    "on": ["detect", "success", "failure", "long_cycle"]
+  },
+  "panel": {
+    "history_days": 3,
+    "show_skipped_stale": false
+  },
+  "state_dir": "state"
+}
